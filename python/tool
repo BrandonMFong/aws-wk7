@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+"""
+tool
+==============
+Holds all requirements for week 7 assignment 
+"""
+__author__ = "Brando"
+
+import sys
+import boto3
+
+def main():
+	"""
+	main
+	===============
+
+	"""
+	result 	= 0
+	success = True
+	client = None
+
+	if success:
+		client = boto3.client('ec2', region_name='us-east-1')
+		if client is None:
+			success = False
+			print("client could not be created")
+
+	if success:
+		clientResult = client.enable_ebs_encryption_by_default()
+		if clientResult is None:
+			print("enable_ebs_encryption_by_default() returned None")
+			success = False
+		else:
+			if clientResult['EbsEncryptionByDefault'] is False:
+				print("Failed to set ebs encryption to true")
+				success = False
+
+	if success is False:
+		print("main() failed")
+		result = 1
+
+	sys.exit(result)
+
+if __name__ == "__main__":
+	main()
