@@ -76,7 +76,7 @@ resource "aws_iam_policy" "lambda-iam-policy" {
 
 # Lastly, we've got that dumb "attachment" thing where we need to connect
 # the role and the policy together.  You did this in week5 too.
-resource "aws_iam_role_policy_attachment" "automation-role" {
+resource "aws_iam_role_policy_attachment" "week7-lambda-automation-role" {
   role       = aws_iam_role.lambda-iam-role.name
   policy_arn = aws_iam_policy.lambda-iam-policy.arn
 }
