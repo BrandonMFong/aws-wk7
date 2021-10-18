@@ -61,6 +61,20 @@ data "aws_iam_policy_document" "lambda-iam-policy" {
   }
 }
 
+# Brando addition start 
+data "aws_iam_policy_document" "lambda-iam-policy-1" {
+  statement {
+    sid = "Week7LambdaS3"
+    effect = "Allow"
+    actions = [
+"s3:GetObject"
+]  
+resources = [
+	"${aws_s3_bucket.week7-bucket.arn}/*"
+]
+  } 
+} 
+# Brando addition end 
 
 # Now that we've defined the *contents* of our policy let's create the
 # actual resource.
