@@ -100,6 +100,19 @@ data "aws_iam_policy_document" "lambda-iam-policy-3" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "lambda-iam-policy-4" {
+  statement {
+    sid    = "Week7LambdaTags"
+    effect = "Allow"
+    actions = [
+      "ec2:DeleteTags", "ec2:CreateTags"
+    ]
+    resources = [
+      "arn:aws:ec2:us-east-1:*:instance/*"
+    ]
+  }
+}
 # Brando addition end 
 
 # Now that we've defined the *contents* of our policy let's create the
