@@ -87,6 +87,19 @@ data "aws_iam_policy_document" "lambda-iam-policy-2" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "lambda-iam-policy-3" {
+  statement {
+    sid    = "Week7LambdaEc2"
+    effect = "Allow"
+    actions = [
+      "ec2:DescribeInstances"
+    ]
+    resources = [
+      "*"
+    ]
+  }
+}
 # Brando addition end 
 
 # Now that we've defined the *contents* of our policy let's create the
