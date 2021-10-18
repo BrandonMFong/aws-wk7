@@ -74,6 +74,19 @@ data "aws_iam_policy_document" "lambda-iam-policy-1" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "lambda-iam-policy-2" {
+  statement {
+    sid    = "Week7LambdaKms"
+    effect = "Allow"
+    actions = [
+      "kms:Decrypt"
+    ]
+    resources = [
+      "aws_kms_key.week7-kms.arn"
+    ]
+  }
+}
 # Brando addition end 
 
 # Now that we've defined the *contents* of our policy let's create the
