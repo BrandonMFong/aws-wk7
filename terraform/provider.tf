@@ -141,7 +141,7 @@ resource "aws_instance" "week5-automation-vm" {
   ami                  = data.aws_ami.latest-ubuntu.id
   instance_type        = "t2.micro"
   subnet_id            = aws_subnet.week5-automation-sub-a.id
-  iam_instance_profile = aws_iam_instance_profile.week5-automation-profile.name
+  iam_instance_profile = aws_iam_instance_profile.automation-profile.name
 
   vpc_security_group_ids = [
     aws_security_group.week5-automation-ssh-sg.id
@@ -150,7 +150,7 @@ resource "aws_instance" "week5-automation-vm" {
   key_name = "ECE592"
 
   tags = {
-    Name = "week5-automation-vm"
+    Name = "week7"
   }
 }
 
@@ -166,8 +166,8 @@ data "aws_ami" "latest-ubuntu" {
 }
 
 # IAM profile ref
-resource "aws_iam_instance_profile" "week5-automation-profile" {
-  name = "week5-automation-profile"
+resource "aws_iam_instance_profile" "automation-profile" {
+  name = "week7-automation-profile"
   role = aws_iam_role.automation-role.name
   tags = {}
 }
