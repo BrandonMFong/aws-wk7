@@ -172,10 +172,10 @@ resource "aws_iam_instance_profile" "week5-automation-profile" {
   tags = {}
 }
 
-# SSE-KMS 
-resource "aws_kms_key" "week6-kms-v2" {}
+## SSE-KMS 
+#resource "aws_kms_key" "week6-kms-v2" {}
 
-resource "aws_kms_alias" "week6-kms-v2" {
-  name          = "alias/week6-kms-v2"
-  target_key_id = aws_kms_key.week6-kms-v2.key_id
-}
+#resource "aws_kms_alias" "week6-kms-v2" {
+#  name          = "alias/week6-kms-v2"
+#  target_key_id = aws_kms_key.week6-kms-v2.key_id
+#}
