@@ -34,16 +34,18 @@ resource "aws_s3_bucket" "ece592-week7-brando" {
 resource "aws_lambda_permission" "week7-bucket-lambda" {
   statement_id  = "AllowExecutionFromS3Bucket"
   action        = "lambda:InvokeFunction"
-  function_name = "arn:aws:lambda:us-east-1:128928602505:function:week6-lambda"
+#  function_name = "arn:aws:lambda:us-east-1:128928602505:function:week6-lambda"
+  function_name = aws_lambda_function.lambda.arn
   principal     = "s3.amazonaws.com"
-  source_arn    = aws_s3_bucket.ece592-week6-brando.arn
+  source_arn    = aws_s3_bucket.ece592-week7-brando.arn
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
   bucket = aws_s3_bucket.ece592-week7-brando.id
 
   lambda_function {
-    lambda_function_arn = "arn:aws:lambda:us-east-1:128928602505:function:week7-lambda"
-    events              = ["s3:ObjectCreated:*"]
+#    lambda_function_arn = "arn:aws:lambda:us-east-1:128928602505:function:week7-lambda"
+  lambda_function_arn  = aws_lambda_function.lambda.arn 
+   events              = ["s3:ObjectCreated:*"]
   }
 }
