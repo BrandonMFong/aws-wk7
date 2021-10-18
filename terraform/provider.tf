@@ -27,7 +27,7 @@ resource "aws_vpc" "week5-automation-vpc" {
   instance_tenancy = "default"
 
   tags = {
-    Name = "week5-automation-vpc"
+    Name = "week7-automation-vpc"
   }
 }
 
